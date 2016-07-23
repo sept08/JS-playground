@@ -12,3 +12,10 @@ Function.prototype.method = function(name, func){
 Number.method('integer', function(){
 	return Math[this < 0 ? 'ceil' : 'floor'](this);
 });
+
+/**
+* function: Romve string's blank of the header and the tail
+*/
+String.method('trim',function()){
+	return this.replace(/^\s+|\s+$/g, '');
+};
