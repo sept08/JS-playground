@@ -22,4 +22,24 @@ define(function(){
 	String.method('trim',function(){
 		return this.replace(/^\s+|\s+$/g, '');
 	});
+
+	/**
+	* To replace a special string 
+	*/
+	String.method('deentityify',function(){
+		// word table
+		var entity = {
+			quot : '"',
+			lt : '<',
+			gt : '>'
+		};
+
+		return function(){
+			return this.replace(/&([^&;]+);/g, function(a,b){
+				debugger;
+				var r = entity[b];
+				return typeof r === 'string' ? r : a;
+			});
+		};
+	}());
 });
