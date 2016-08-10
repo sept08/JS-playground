@@ -23,6 +23,22 @@ define(function(){
 		return this.replace(/^\s+|\s+$/g, '');
 	});
 
+	// change arguments to array
+	function toArray(args){
+		return Array.prototype.slice.call(args);
+	};
+	/**
+	* function: To curry a function
+	*/
+	Function.method('curry',function(){
+		var that = this,
+			slice = Array.prototype.slice,
+			args = slice.apply(arguments);
+		return function(){
+			return that.apply(null, args.concat(slice.apply(arguments)));
+		};
+	});
+
 	/**
 	* To replace a special string 
 	*/
