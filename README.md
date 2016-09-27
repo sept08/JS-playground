@@ -1,4 +1,3 @@
 # JS-playground
-It contains a number of attempts based on JavaScript, Module, Method and so on.
-/******************************************************************/
-1.bTools is a basic functional lib by myself.
+##前言
+　　本仓库主要记录笔者学习JS相关知识过程中的笔记与工程，由于Web前端第三方组件库非常丰富，笔者也会将常用的及小众但经笔者亲历过的组件库，介绍于此及本仓库的wiki中。

@@ -1,4 +1,5 @@
 define(function(){
+
 	/**
 	* function: Do not have to type 'prototype' characters when adding method for object.
 	*/
