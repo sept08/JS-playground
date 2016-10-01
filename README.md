@@ -1,3 +1,11 @@
 # JS-playground
 ##前言
-　　本仓库主要记录笔者学习JS相关知识过程中的笔记与工程，由于Web前端第三方组件库非常丰富，笔者也会将常用的及小众但经笔者亲历过的组件库，介绍于此及本仓库的wiki中。
+　　本仓库主要记录笔者学习JS相关知识过程中的技术总结、工具分享及工程实践。
+
+##常用工具
+* 前端试验工具
+	* JsFiddle：[https://jsfiddle.net/](https://jsfiddle.net/)
+* js格式化整理工具
+	* jsbeautifier：[http://jsbeautifier.org/](http://jsbeautifier.org/)
+* 国内工具集
+	* [http://tool.lu/](http://tool.lu/)
