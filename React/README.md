@@ -14,14 +14,14 @@ React组件实现了一个`render()`方法，该方法可以获取输入数据�
 **JSX对于使用React是可选的而不是必要的**，下面会同时列出由JSX编译器所产生的原生Javascript代码以供参考。
 
 **JSX code:**
-
-	class HelloMessage extends React.Component{
-		render(){
-			return <div>Hello {this.props.name}</div>;
-		}
-	}
-	
-	ReactDOM.render(<HelloMessage name="John" />, mountNode);
+```js
+class HelloMessage extends React.Component{
+  render(){
+    return <div>Hello {this.props.name}</div>;
+  }
+}
+ReactDOM.render(<HelloMessage name="John" />, mountNode);
+```
 **Compiled JS code:**
 
 ###一个有状态的组件
