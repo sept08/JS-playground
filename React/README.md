@@ -37,7 +37,129 @@ class HelloMessage extends React.Component {
 ReactDOM.render(React.createElement(HelloMessage, {name: "John"}), mountNode);
 ```
 ###一个有状态的组件
+除了可以获取输入数据（通过`this.props`访问）外，组件还可以保存中间状态数据（通过`this.state`访问）。当组件的状态数据改变时，呈现的标记通过重新调用`render()`来进行更新。
+**JSX code:**
+```JSX
+class Timer extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {secondsElapsed: 0};
+  }
 
+  tick() {
+    this.setState((prevState) => ({
+      secondsElapsed: prevState.secondsElapsed + 1
+    }));
+  }
+
+  componentDidMount() {
+    this.interval = setInterval(() => this.tick(), 1000);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.interval);
+  }
+
+  render() {
+    return (
+      <div>Seconds Elapsed: {this.state.secondsElapsed}</div>
+    );
+  }
+}
+
+ReactDOM.render(<Timer />, mountNode);
+```
 ###一个应用
+我们可以组合`props`和`state`成为一个待办事项的小应用，这个例子使用`state`跟踪事项列表以及用户输入。虽然事件处理程序通常是内联渲染的，但此处可以通过事件代理进行数据的收集和呈现。
+```JSX
+class TodoApp extends React.Component {
+  constructor(props) {
+    super(props);
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.state = {items: [], text: ''};
+  }
 
+  render() {
+    return (
+      <div>
+        <h3>TODO</h3>
+        <TodoList items={this.state.items} />
+        <form onSubmit={this.handleSubmit}>
+          <input onChange={this.handleChange} value={this.state.text} />
+          <button>{'Add #' + (this.state.items.length + 1)}</button>
+        </form>
+      </div>
+    );
+  }
+
+  handleChange(e) {
+    this.setState({text: e.target.value});
+  }
+
+  handleSubmit(e) {
+    e.preventDefault();
+    var newItem = {
+      text: this.state.text,
+      id: Date.now()
+    };
+    this.setState((prevState) => ({
+      items: prevState.items.concat(newItem),
+      text: ''
+    }));
+  }
+}
+
+class TodoList extends React.Component {
+  render() {
+    return (
+      <ul>
+        {this.props.items.map(item => (
+          <li key={item.id}>{item.text}</li>
+        ))}
+      </ul>
+    );
+  }
+}
+
+ReactDOM.render(<TodoApp />, mountNode);
+```
 ###使用外部插件的组件
+React非常灵活并提供挂钩允许你对接外部的库和框架，这个例子使用**remarkable**——一个外部MarkDowm库，来实时转换文本的值。
+```JSX
+class MarkdownEditor extends React.Component {
+  constructor(props) {
+    super(props);
+    this.handleChange = this.handleChange.bind(this);
+    this.state = {value: 'Type some *markdown* here!'};
+  }
+
+  handleChange() {
+    this.setState({value: this.refs.textarea.value});
+  }
+
+  getRawMarkup() {
+    var md = new Remarkable();
+    return { __html: md.render(this.state.value) };
+  }
+
+  render() {
+    return (
+      <div className="MarkdownEditor">
+        <h3>Input</h3>
+        <textarea
+          onChange={this.handleChange}
+          ref="textarea"
+          defaultValue={this.state.value} />
+        <h3>Output</h3>
+        <div
+          className="content"
+          dangerouslySetInnerHTML={this.getRawMarkup()}
+        />
+      </div>
+    );
+  }
+}
+
+ReactDOM.render(<MarkdownEditor />, mountNode);
+```
