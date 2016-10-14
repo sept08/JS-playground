@@ -63,6 +63,17 @@ die('{"OK": 1}');
 简单起见，我们只移动文件而没有做任何校验（实际情况下这是不完备的），如果从服务器端返回一些响应（例如简单的JSON）会更好，这样你便可通过Plupload捕获到请求的结束。
 
 ##启动文件队列
+这一步完全取决于你，例子中我们会向临时队列里增加一些选择的文件，并显示每个文件的上传进度。为了实现这个要求，我们需要绑定两个事件：`FilesAdded`和`UploadProgress`。
+```js
+uploader.bind('FilesAdded', function(up, files){
+	var html = '';
+	plupload.each(files, function(file){
+		html += '<li id="' + file.id + '">' + file.name + ' (' +plupload.formatSize(file.size) + ')<b></b></li>';
+	});
+	document.getElementById('filelist').innerHTML += html;
+});
+```
+列表中的每一行对应我们的一个文件，注意到空的`<b></b>`标签，我们将在其中填入上传数据进度的百分比。
 
 ##错误处理
 
