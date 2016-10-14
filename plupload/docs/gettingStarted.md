@@ -32,7 +32,20 @@
 现在让我们给他们赋予生命。
 
 ##初始化Plupload
+首先我们需要实例化Plupload上传器：
+```html
+<script type="text/javascript">
+var uploader = new plupload.Uploader({
+    browse_button: 'browse', //此为DOM元素的ID或者DOM元素本身
+    url: 'upload.php'
+});
 
+uploader.init();
+</script>
+```
+值得注意的是我们显式地调用`uploader`对象的`init()`方法来实例化它，对于这样做的原因我们稍后会做解释，在我们为`uploader`绑定任何事件前，先简单的记着我们是如此调用的就好。
+
+通常你的配置将比这更多，但目前你所需的就是这些——浏览按钮和服务器端处理程序的URL，它将接收文件后做一些安全性校验，最后将他们移动到目的文件夹。
 ##创建上传处理程序
 
 ##启动文件队列
