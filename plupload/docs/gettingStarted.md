@@ -19,6 +19,17 @@
 我们首先从包含`js/plupload.full.min.js`开始，核心API不依赖与jQuery或其他任何框架，只靠自己就可以使用。
 
 ##增加基本的HTML框架
+现在我们需要一组DOM元素来承载典型文件上传器的主要功能组件——浏览按钮，上传按钮以及文件队列。
+```html
+<ul id="filelist"></ul>
+<br />
+
+<div id="container">
+    <a id="browse" href="javascript:;">[Browse...]</a> 
+    <a id="start-upload" href="javascript:;">[Start Upload]</a>
+</div>
+```
+现在让我们给他们赋予生命。
 
 ##初始化Plupload
 
