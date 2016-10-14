@@ -11,7 +11,9 @@
 
 ##准备
 最新版本的[Plupload](http://www.plupload.com/download.php)总是可以从其官网的下载界面获得的。
+
 简单起见，我们复制整个`js/`文件夹到示例html所在的路径。
+![prepare img](https://camo.githubusercontent.com/716d59f99b288426256c053432bb6e05fed86caa/68747470733a2f2f7261772e6769746875622e636f6d2f77696b692f6d6f786965636f64652f706c75706c6f61642f47657474696e67253230537461727465642f30312d66696c652d7374727563747572652e706e67)
 我们首先从包含`js/plupload.full.min.js`开始，核心API不依赖与jQuery或其他任何框架，只靠自己就可以使用。
 
 ##增加基本的HTML框架
