@@ -74,9 +74,92 @@ uploader.bind('FilesAdded', function(up, files){
 });
 ```
 列表中的每一行对应我们的一个文件，注意到空的`<b></b>`标签，我们将在其中填入上传数据进度的百分比。
+```js
+uploader.bind('UploadProgress', function(up, file) {
+    document.getElementById(file.id).getElementsByTagName('b')[0].innerHTML = '<span>' + file.percent + "%</span>";
+});
+```
+还有更多的事件被uploader触发，你可在API中获取更多的详细信息。
 
 ##错误处理
+另一件你确实需要实现的功能就是错误处理，在所有事情都都正常工作时，这可能看起来有些无聊不是完全有必要，但如果突然有什么地方出错，它可能会帮你节省几个小时懵逼的时间。
+
+所有，让我们在html结构中再加一小块：
+```html
+<br />
+<pre id="console"></pre>
+```
+以及一条监听事件:
+```js
+uploader.bind('Error', function(up, err) {
+    document.getElementById('console').innerHTML += "\nError #" + err.code + ": " + err.message;
+});
+```
+这里所做的只是简单地在控制台中打印日志（实际情况下，错误处理可能要做些更有用的事情）。
 
 ##启动开始上传按钮
-
+最后我们当我们点击`Start Upload`按钮时启动上传:
+```js
+document.getElementById('start-upload').onclick = function() {
+    uploader.start();
+};
+```
 ##完整实例
+```html
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+
+<title>Plupload - Getting Started</title>
+
+<script type="text/javascript" src="js/plupload.full.min.js"></script>
+
+</head>
+<body>
+
+<ul id="filelist"></ul>
+<br />
+
+<div id="container">
+    <a id="browse" href="javascript:;">[Browse...]</a> 
+    <a id="start-upload" href="javascript:;">[Start Upload]</a>
+</div>
+
+<br />
+<pre id="console"></pre>
+
+<script type="text/javascript">
+
+var uploader = new plupload.Uploader({
+    browse_button: 'browse', // this can be an id of a DOM element or the DOM element itself
+    url: 'upload.php'
+});
+
+uploader.init();
+
+uploader.bind('FilesAdded', function(up, files) {
+    var html = '';
+    plupload.each(files, function(file) {
+        html += '<li id="' + file.id + '">' + file.name + ' (' + plupload.formatSize(file.size) + ') <b></b></li>';
+    });
+    document.getElementById('filelist').innerHTML += html;
+});
+
+uploader.bind('UploadProgress', function(up, file) {
+    document.getElementById(file.id).getElementsByTagName('b')[0].innerHTML = '<span>' + file.percent + "%</span>";
+});
+
+uploader.bind('Error', function(up, err) {
+    document.getElementById('console').innerHTML += "\nError #" + err.code + ": " + err.message;
+});
+
+document.getElementById('start-upload').onclick = function() {
+    uploader.start();
+};
+
+</script>
+</body>
+</html>
+```
+更多替代语法和完整实例可在下载包中查看。
