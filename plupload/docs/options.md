@@ -9,7 +9,7 @@
     * [max_file_size](#filters.max_file_size) `0`
     * [prevent_duplicates](#filters.prevent_duplicates) `false`
 * [控制请求](#控制请求)
-  * [headers](#headers) `undefined`
+  * [headers](#headers) `undefined`
   * [multipart](#multipart) `true`
   * [multipart_params](#multipart_params) `undefined`
   * [max_retries](#max_retries) `0`
