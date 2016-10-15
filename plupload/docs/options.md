@@ -13,6 +13,7 @@
   * [multipart](#multipart) `true`
   * [multipart_params](#multipart_params) `undefined`
   * [max_retries](#max_retries) `0`
+* [分片](#分片)
 
 
 
@@ -66,3 +67,6 @@ multipart_params: {
 ###max_retries
 当发生`plupload.HTTP_ERROR`错误时的重试次数，为0时表示不重试。
 
+##分片
+###chunk_size
+分片上传文件时，每片文件被切割成的大小，为数字时单位为字节。也可以使用一个带单位的字符串，如`200kb`。当该值为0时表示不使用分片上传功能
