@@ -58,14 +58,18 @@ ReactDOM.render(
 * 所有评论的视图
 * 提交评论的表单
 * 为你提供自定义的后台
+
 它还具有一些灵活的特性：
 * **优化评论**：评论在保存到服务器之前就会出现在列表中，所以感觉很快。
 * **实时更新**：其他用户的评论会实时地出现在评论视图中。
 * **Markdown格式化**：用户可以是用Markdown来格式化他们文本。
+
 如果想跳过这些描述看源码，可直接访问[Github上的该项目](https://github.com/reactjs/react-tutorial)
+
 ###运行一个服务
 在开始本教程之前，我们需要准备一个正在运行的服务器。它只单纯地作为获取和保存数据使用。简单起见，我们只用脚本语言创建此刚刚好的服务器。你可以[查看本教程源码](https://github.com/reactjs/react-tutorial/)或[下载其zip文件](https://github.com/reactjs/react-tutorial/archive/master.zip)以开始后续教程。
 简单起见，服务器使用JSON文件作为数据库，在生产环境中你当然不能这么搞，但这确实使调试变得简单。一旦你启动了服务器，它就开始将对API及静态页面提供支持。
+
 ###开始
 本教程凡是从简，上述讨论的服务器包为一个HTML文件，在编辑器中打开`public/index.html`如下：
 ```html
