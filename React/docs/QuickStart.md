@@ -5,6 +5,8 @@
   * [初学者工具包](#初学者工具包)
   * [包管理器](#包管理器)
 * [教程](#教程)
+  * [服务器](#服务器)
+  * [起步](#起步)
 * [React思想](#react思想)
 
 ##开始
@@ -66,11 +68,11 @@ ReactDOM.render(
 
 如果想跳过这些描述看源码，可直接访问[Github上的该项目](https://github.com/reactjs/react-tutorial)
 
-###运行一个服务
+###服务器
 在开始本教程之前，我们需要准备一个正在运行的服务器。它只单纯地作为获取和保存数据使用。简单起见，我们只用脚本语言创建此刚刚好的服务器。你可以[查看本教程源码](https://github.com/reactjs/react-tutorial/)或[下载其zip文件](https://github.com/reactjs/react-tutorial/archive/master.zip)以开始后续教程。
 简单起见，服务器使用JSON文件作为数据库，在生产环境中你当然不能这么搞，但这确实使调试变得简单。一旦你启动了服务器，它就开始将对API及静态页面提供支持。
 
-###开始
+###起步
 本教程凡是从简，上述讨论的服务器包为一个HTML文件，在编辑器中打开`public/index.html`如下：
 ```html
 <!DOCTYPE html>
