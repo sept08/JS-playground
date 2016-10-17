@@ -36,6 +36,20 @@
   </body>
 </html>
 ```
+JavaScript内嵌的XML语法叫作JSX（后续会有更多介绍）,为将其转化成vanilla JavaScript我们使用`<script type="text/babel">`，浏览器会转化Babel标签内的信息。从浏览器中打开该html，你就可以看到这句问候语了。
+
+React JSX代码可以存放在独立的文件中，创建如下`src/helloworld.js`:
+```js
+ReactDOM.render(
+ <h1>Hello, world!</h1>,
+ document.getElementById('example')
+);
+```
+并在`helloworld.html`中做如下引用:
+```html
+<script type="text/babel" src="src/helloworld.js"><script>
+```
+值得注意的是一些浏览器如非在HTTP下，加载文件时会出错。
 ###包管理器
 你也可以通过包管理器使用React（如：npm,Bower）
 ##教程
