@@ -53,5 +53,7 @@ ReactDOM.render(
 ###包管理器
 你也可以通过包管理器使用React（如：npm,Bower）
 ##教程
+我们将构建一个简单而实用的评论框，你可将其引入博客或基础版的实评系统中使用，就像Disqus,LiveFyre或Facebook里的那样。
+我们将提供：
 
 ##React思想
