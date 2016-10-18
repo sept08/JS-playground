@@ -7,6 +7,7 @@
 * [教程](#教程)
   * [服务器](#服务器)
   * [起步](#起步)
+  * [首个组件](#首个组件)
 * [React思想](#react思想)
 
 ##开始
@@ -92,8 +93,7 @@ ReactDOM.render(
     <div id="content"></div>
     <script type="text/babel" src="scripts/example.js"></script>
     <script type="text/babel">
-      // To get started with this tutorial running your own code, simply remove
-      // the script tag loading scripts/example.js and start writing code here.
+      // 移除scripts/example.js标签，在此写你的代码以开始本教程
     </script>
   </body>
 </html>
@@ -101,5 +101,59 @@ ReactDOM.render(
 本教程的剩余部分，我们将在`script`标签中编写JavaScript代码，由于没有包含任何高级的实时重载工具，所以想看到每次修改的效果，你需要保存后刷新浏览器。接下来启动服务器后在浏览器中打开`http://localhost:3000`。若你首次加载且没做任何修改，你会看到我们将要完成的样子。当你准备开始的时候，只需要删除首个`script`标签后再继续。
 > **注意：**
 此例中包含jQuery是为了以后AJAX调用的方便，其实React的工作对其并不依赖。
+
+###首个组件
+React是由模块、组件组合构成的。对于我们的评论框实例，我们将采用如下组件结果：
+```
+ - CommentBox
+   - CommentList
+     - Comment
+   - CommentForm
+```
+我们通过简单的`<div>`来构建`CommentBox`组件：
+```js
+var CommentBox = React.createClass({
+  render: function() {
+    return (
+      <div className="commentBox">
+        Hello, world! I am a CommentBox.
+      </div>
+    );
+  }
+});
+ReactDOM.render(
+  <CommentBox />,
+  document.getElementById('content')
+);
+```
+值得一提的是原生HTML元素名称以小写字母开头，自定义React类名以大写字母开头。
+####JSX 语法
+相信你注意到了Javascript中的类XML语法，我们可通过简单的预编译器将其转化成原生JS:
+```js
+var CommentBox = React.createClass({displayName: 'CommentBox',
+  render: function() {
+    return (
+      React.createElement('div', {className: "commentBox"},
+        "Hello, world! I am a CommentBox."
+      )
+    );
+  }
+});
+ReactDOM.render(
+  React.createElement(CommentBox, null),
+  document.getElementById('content')
+);
+```
+这种语法的使用是可选的，只是我们觉得JSX语法比原生JS语法简单，关于JSX的更多内容会在后面介绍。
+####发生了什么
+我们传递包含一些方法的JavaScript对象给`React.createClass()`以创建新的React组件。这些方法中最重要的是`render()`,它返回呈现到HTML上的React组件树。
+
+`<div>`标签并非实际的DOM节点，他们只是React `div` 组件的实例化。你可以把他们当做标记或数据片，React会知道如何处理。React是**安全的**，它不会产生HTML字符串所以默认是防XSS。
+
+你不需要返回基本HTML，只需返回你所构建的组件树。这就是React可以**组合**的原因——可维护前端的关键信条。
+
+`ReactDOM.render()`会实例化出根组件并启动框架，以及将标记注入第二个参数指向的原始DOM元素。
+`ReactDOM`模块公开了指定DOM的相关方法，`React`会在不同平台上共享核心工具。
+本教程脚本底部的`ReactDOM.render`方法很重要，它应当在复合组件被定义后再调用。
 
 ##React思想
