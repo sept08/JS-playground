@@ -8,6 +8,8 @@
   * [服务器](#服务器)
   * [起步](#起步)
   * [首个组件](#首个组件)
+  * [组合组件](#组合组件)
+  * [使用props](#使用props)
 * [React思想](#react思想)
 
 ##开始
@@ -155,5 +157,74 @@ ReactDOM.render(
 `ReactDOM.render()`会实例化出根组件并启动框架，以及将标记注入第二个参数指向的原始DOM元素。
 `ReactDOM`模块公开了指定DOM的相关方法，`React`会在不同平台上共享核心工具。
 本教程脚本底部的`ReactDOM.render`方法很重要，它应当在复合组件被定义后再调用。
+###组合组件
+接下来我们构建`CommentList`和`CommentForm`组件：
+```js
+var CommentList = React.createClass({
+  render: function() {
+    return (
+      <div className="commentList">
+        Hello, world! I am a CommentList.
+      </div>
+    );
+  }
+});
 
+var CommentForm = React.createClass({
+  render: function() {
+    return (
+      <div className="commentForm">
+        Hello, world! I am a CommentForm.
+      </div>
+    );
+  }
+});
+```
+接着更新`CommentBox`组件，加入上面新建的两个组件：
+```js
+var CommentBox = React.createClass({
+  render: function() {
+    return (
+      <div className="commentBox">
+        <h1>Comments</h1>
+        <CommentList />
+        <CommentForm />
+      </div>
+    );
+  }
+});
+```
+> 为了避免全局命名空间的污染，JSX编译器会自动重写HTML标签
+
+###使用props
+我们创建`Comment`组件，其数据来源于`CommentList`组件。可通过`this.props`指定属性键值来获取HTML标签的属性值，标签任何内嵌元素都可通过`this.props.children`获取。
+```js
+var Comment = React.createClass({
+  render: function() {
+    return (
+      <div className="comment">
+        <h2 className="commentAuthor">
+          {this.props.author}
+        </h2>
+        {this.props.children}
+      </div>
+    );
+  }
+});
+```
+###组件属性
+上面已定义了`Comment`组件，现想给其传递作者名和评论文本，这允许我们为每个不同的评论重用相同的代码，以下在`CommentList`组件中增加一些评论：
+```js
+var CommentList = React.createClass({
+  render: function() {
+    return (
+      <div className="commentList">
+        <Comment author="Pete Hunt">This is one comment</Comment>
+        <Comment author="Jordan Walke">This is *another* comment</Comment>
+      </div>
+    );
+  }
+});
+```
+注意到我们传递的数据是从父组件`CommentList`到子组件`Comment`的。例如，把Pete Hunt（由`author`属性获得）与*This is one comment*（由类XML子节点获得）传递给第一个`Comment`。如上述代码可知，`Comment`可通过`this.props.author`和`this.props.children`获取对应的属性数据。
 ##React思想
