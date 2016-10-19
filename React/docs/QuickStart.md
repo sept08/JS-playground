@@ -8,8 +8,10 @@
   * [服务器](#服务器)
   * [起步](#起步)
   * [首个组件](#首个组件)
-  * [组合组件](#组合组件)
+  * [组合组件](#组合组件)
   * [使用props](#使用props)
+  * [增加markdown](#增加markdown)
+  * [添加数据模型](#添加数据模型)
 * [React思想](#react思想)
 
 ##开始
@@ -227,4 +229,94 @@ var CommentList = React.createClass({
 });
 ```
 注意到我们传递的数据是从父组件`CommentList`到子组件`Comment`的。例如，把Pete Hunt（由`author`属性获得）与*This is one comment*（由类XML子节点获得）传递给第一个`Comment`。如上述代码可知，`Comment`可通过`this.props.author`和`this.props.children`获取对应的属性数据。
+
+###增加Markdown
+Markdown是一种内联格式化文本的简单方式，比如你可以用星号包围文本以对其强调。
+本教程我们使用第三方库**remarkable**来处理Markdown文本，将其转化以替代原始HTML。实例中已经引入该库，所以在脚本中可以直接使用：
+```js
+var Comment = React.createClass({
+  render: function() {
+    var md = new Remarkable();
+    return (
+      <div className="comment">
+        <h2 className="commentAuthor">
+          {this.props.author}
+        </h2>
+        {md.render(this.props.children.toString())}
+      </div>
+    );
+  }
+});
+```
+由于需要将`this.props.children`从React包裹的文本转化为remarkable可理解的原始字符串，所以需要调用`toString()`方法来完成。但这存在一个问题，我们在浏览器中呈现的评论看起来是这个样子：“`<p>`This is `<em>`another`</em>` comment`</p>`”，可我们希望这些标签可被当做HTML进行渲染。这是因为React保护你面授XSS攻击，这里有一个方法可以解决它但框架会警告你不要这样用：
+```js
+var Comment = React.createClass({
+  rawMarkup: function() {
+    var md = new Remarkable();
+    var rawMarkup = md.render(this.props.children.toString());
+    return { __html: rawMarkup };
+  },
+
+  render: function() {
+    return (
+      <div className="comment">
+        <h2 className="commentAuthor">
+          {this.props.author}
+        </h2>
+        <span dangerouslySetInnerHTML={this.rawMarkup()} />
+      </div>
+    );
+  }
+});
+```
+这个特殊的API故意使得插入原始HTML变得困难，但对于remarkable我们将利用这个后门。
+
+###添加数据模型
+目前为止我们还是直接在源代码中插入评论，现在我们用二进制JSON数据替代评论列表中内容，最终这些数据将来自服务器，但目前还是先将其写在源码中：
+```js
+var data = [
+  {id: 1, author: "Pete Hunt", text: "This is one comment"},
+  {id: 2, author: "Jordan Walke", text: "This is *another* comment"}
+];
+```
+我们需要将这些数据插入`CommentList`，在`ReactDOM.render()`通过props传递这些数据：
+```js
+var CommentBox = React.createClass({
+  render: function() {
+    return (
+      <div className="commentBox">
+        <h1>Comments</h1>
+        <CommentList data={this.props.data} />
+        <CommentForm />
+      </div>
+    );
+  }
+});
+
+ReactDOM.render(
+  <CommentBox data={data} />,
+  document.getElementById('content')
+);
+```
+接下来就可以动态的添加评论了：
+```js
+var CommentList = React.createClass({
+  render: function() {
+    var commentNodes = this.props.data.map(function(comment) {
+      return (
+        <Comment author={comment.author} key={comment.id}>
+          {comment.text}
+        </Comment>
+      );
+    });
+    return (
+      <div className="commentList">
+        {commentNodes}
+      </div>
+    );
+  }
+});
+```
+
+
 ##React思想
