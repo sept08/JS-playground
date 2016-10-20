@@ -1,9 +1,9 @@
 #[React](https://facebook.github.io/react/)  [![Build Status](https://img.shields.io/travis/facebook/react/master.svg?style=flat)](https://travis-ci.org/facebook/react) [![npm version](https://img.shields.io/npm/v/react.svg?style=flat)](https://www.npmjs.com/package/react) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md#pull-requests)
 一个构建用户界面的javascript库
 * 快速开始
-  * [起步](./docs/GettingStarted.md)
-  * [教程](./docs/Tutorial.md)
-  * [在React中思考](./docs/ThinkingInReact.md)
+ * [起步](./docs/GettingStarted.md)
+ * [教程](./docs/Tutorial.md)
+ * [在React中思考](./docs/ThinkingInReact.md)
 
 |声明|基于组件|基于组件|
 |-----|-------|-----|
