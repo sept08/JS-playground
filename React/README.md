@@ -1,6 +1,7 @@
-#React
+#[React](https://facebook.github.io/react/)
+[![npm version](https://img.shields.io/npm/v/react.svg?style=flat)](https://www.npmjs.com/package/react)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md#pull-requests)
 * 一个构建用户界面的javascript库
-* v15.3.2
 * [起步](./docs/QuickStart.md)
 
 |声明|基于组件|基于组件|
