@@ -3,7 +3,7 @@
 　　本仓库主要记录笔者学习JS相关知识过程中的技术总结、工具分享及工程实践。
 
 ##文档
-* [React](/React/README.md)
+* [React](/React/README.md) [![npm version](https://img.shields.io/npm/v/react.svg?style=flat)](https://www.npmjs.com/package/react)
 
 ##常用工具
 * 前端试验工具
