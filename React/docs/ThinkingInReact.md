@@ -14,8 +14,12 @@
 
 上面例子中包含了五个组件，以下将用斜体表示每个组件所代表的数据：
 
-1. FilterableProductTable(<font color="orange">橙色</font>)：包括了整个例子
-1. SearchBar(<font color="blue">蓝色</font>)
-1. ProductTable(<font color="green">绿色</font>)
-1. ProductCategoryRow(<font color="turquoise">青色</font>)
-1. ProductRow(<span><font color="red">红色</font></span>)
+1. FilterableProductTable(橙色)：包括了整个例子
+1. SearchBar(蓝色)：接收所有用户的输入
+1. ProductTable(绿色)：基于用户输入对数据进行过滤显示
+1. ProductCategoryRow(青色)：为每种类别显示其信息头
+1. ProductRow(红色)：每种产品显示一行
+
+如果你看看`ProductTable`，你会发现这里（包含"Name"和"Price"标签）的表头并未独立成一个组件。采用什么方式都有一个理由，这是一个偏好问题，例如，我将其作为`ProductTable`的部件是因为它是呈现数据采集的一部分，而这这正是`ProductTable`的职责。当然如果这个表头以后变得复杂（譬如如果我们要加入排序的功能），你会有将其独立成`ProductTableHeader`组件。
+
+现在我们已经可以在草图中识别出组件了，接下来将他们排列出层次结构。这很简单，草图中包含于其他组件内的组件，在层次结构上就当做子组件出现：
