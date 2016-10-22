@@ -23,3 +23,8 @@
 如果你看看`ProductTable`，你会发现这里（包含"Name"和"Price"标签）的表头并未独立成一个组件。采用什么方式都有一个理由，这是一个偏好问题，例如，我将其作为`ProductTable`的部件是因为它是呈现数据采集的一部分，而这这正是`ProductTable`的职责。当然如果这个表头以后变得复杂（譬如如果我们要加入排序的功能），你会有将其独立成`ProductTableHeader`组件。
 
 现在我们已经可以在草图中识别出组件了，接下来将他们排列出层次结构。这很简单，草图中包含于其他组件内的组件，在层次结构上就当做子组件出现：
+* `FilterableProductTable`
+ * `SearchBar`
+ * `ProductTable`
+  * `ProductCategoryRow`
+  * `ProductRow`
