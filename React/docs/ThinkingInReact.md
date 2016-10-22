@@ -26,5 +26,5 @@
 * `FilterableProductTable`
  * `SearchBar`
  * `ProductTable`
-  * `ProductCategoryRow`
-  * `ProductRow`
+   * `ProductCategoryRow`
+   * `ProductRow`
