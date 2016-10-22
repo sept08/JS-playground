@@ -27,5 +27,5 @@
  * `SearchBar`
  * `ProductTable`
    * `ProductCategoryRow`
-   * `ProductRow`
+    * `ProductRow`
 
