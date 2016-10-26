@@ -4,6 +4,7 @@
 
 ##文档
 * [React](/React/README.md) [![npm version](https://img.shields.io/npm/v/react.svg?style=flat)](https://www.npmjs.com/package/react)
+* [微信](/weixin/README.md)
 
 ##常用工具
 * 前端试验工具
