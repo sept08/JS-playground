@@ -4,7 +4,7 @@
 ## 常用工具
 若链接打不开请自行翻墙
 *   githuub stars管理工具
-    *   myGitStar: [http://mygitstar.herokuapp.com/](http://mygitstar.herokuapp.com/)
+    *   myGitStar: [http://mygitstar.herokuapp.com/](http://mygitstar.herokuapp.com/)
     *   astral: [https://app.astralapp.com/](https://app.astralapp.com/)
 *   前端试验工具
     *   JsFiddle：[https://jsfiddle.net/](https://jsfiddle.net/)
