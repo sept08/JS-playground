@@ -18,7 +18,7 @@
 #### 基本功
 *   HTML5
 *   CSS3
-*   JavaScript
+*   [JavaScript](/js/README.md)
 
 #### 框架
 *   React
