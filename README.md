@@ -14,11 +14,6 @@
 *   国内工具集
     *   [http://tool.lu/](http://tool.lu/)
 
-## 笔记
-*   [React](/React/README.md) [![npm version](https://img.shields.io/npm/v/react.svg?style=flat)](https://www.npmjs.com/package/react)
-*   [微信](/weixin/README.md)
-
-
 ## web前端自我修养
 #### 基本功
 *   HTML5
