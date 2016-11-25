@@ -13,4 +13,12 @@ define(['jquery'], function ($) {
     $("#demo3").on('click', function () {
         require(['app/demo3']);
     });
+
+    $("#demo4").on('click', function () {
+        require(['app/demo4']);
+    });
+
+    $("#demo5").on('click', function () {
+        require(['app/demo5']);
+    });
 });
