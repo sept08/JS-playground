@@ -1,6 +1,8 @@
 /**
- * Created by Administrator on 2016/11/23.
+ * Created by Administrator on 2016/11/25.
  */
-define(function (require) {
-    var Vue = require('vue');
-})
+define(['jquery'], function ($) {
+   $("#demo1").on('click', function () {
+       require(['app/demo1']);
+   });
+});
