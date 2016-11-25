@@ -8,11 +8,11 @@
 <body>
 <div class="container">
     <article id="context">
-        <button id="demo1">demo1</button>
-        <button id="demo2">demo2</button>
-        <button id="demo3">demo3</button>
-        <button id="demo4">demo3</button>
-        <button id="demo5">计算属性</button>
+        <button v-for="item in items"
+                :id="item.id"
+                @click="loadDemo(item.id)">
+            <span v-text="item.text"></span>
+        </button>
     </article>
     <section id="ds"></section>
 </div>

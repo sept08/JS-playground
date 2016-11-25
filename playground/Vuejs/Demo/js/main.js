@@ -2,17 +2,17 @@
  * Created by Administrator on 2016/11/23.
  */
 requirejs.config({
-    baseUrl: 'js/lib',
+    baseUrl: 'js/app',
     paths: {
-        app: '../app',
-        jquery: 'jquery-3.1.1',
-        text: 'requirejs/text'
+        jquery: '../lib/jquery-3.1.1',
+        text: '../lib/requirejs/text',
+        vue: '../lib/vue'
     },
     map: {
         '*': {
-            css: 'requirejs/css'
+            css: '../lib/requirejs/css'
         }
     }
 });
 
-requirejs(['app/demo']);
+requirejs(['demo']);

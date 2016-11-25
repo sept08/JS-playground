@@ -1,24 +1,37 @@
 /**
  * Created by Administrator on 2016/11/25.
+ * 1. html文件定位模板
  */
-define(['jquery'], function ($) {
-    $("#demo1").on('click', function () {
-       require(['app/demo1']);
-    });
+define(['vue',
+        'css!../../css/lesson1.css'],
+    function (Vue) {
 
-    $("#demo2").on('click', function () {
-        require(['app/demo2']);
-    });
+    var data = {
+        items: [{
+            id:     'demo1',
+            text:   '纯JS方式'
+        },{
+            id:     'demo2',
+            text:   'VueJS方式'
+        },{
+            id:     'demo3',
+            text:   '数据绑定-插值'
+        },{
+            id:     'demo4',
+            text:   '数据绑定-指令'
+        },{
+            id:     'demo5',
+            text:   '计算属性'
+        }]
+    }
 
-    $("#demo3").on('click', function () {
-        require(['app/demo3']);
-    });
-
-    $("#demo4").on('click', function () {
-        require(['app/demo4']);
-    });
-
-    $("#demo5").on('click', function () {
-        require(['app/demo5']);
-    });
+    var vm = new Vue({
+        el: '#context',
+        data: data,
+        methods: {
+            loadDemo: function (name) {
+                require([name])
+            }
+        }
+    })
 });
