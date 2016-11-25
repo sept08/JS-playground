@@ -1,10 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-
-</body>
-</html>
+<span>请选择：</span>
+<div class="form-select" @mouseover="listStyle.display = 'block'" @mouseout="listStyle.display = 'none'">
+    <span class="form-select-text">{{selected}}</span>
+    <div class="form-select-list" :style="listStyle">
+        <ul>
+            <li v-for="option in options" @click="selectOption(option)">{{option}}</li>
+        </ul>
+    </div>
+</div>
