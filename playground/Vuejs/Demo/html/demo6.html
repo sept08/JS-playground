@@ -1,0 +1,38 @@
+<div class="col-md-7">
+    <h2>乘客列表</h2>
+    <div class="row clearfix visible-md-block visible-lg-block">
+        <div class="col-md-2" v-for="title in titles"><strong>{{title}}</strong></div>
+    </div>
+    <div class="row" v-for="(pax, index) in paxes">
+        <div class="col-md-2">{{pax.name}}</div>
+        <div class="col-md-2">{{pax.idType}}</div>
+        <div class="col-md-3">{{pax.idNumber}}</div>
+        <div class="col-md-2">{{pax.mobile}}</div>
+        <div class="col-md-3"><i>{{flightSummary}}</i></div>
+        <hr v-if="index !== paxes.length - 1">
+    </div>
+</div>
+<div class="col-md-5">
+    <h2>价格信息</h2>
+    <table class="table table-condensed">
+        <tbody>
+        <!--index 为专有名词，与顺序有关-->
+        <template v-for="(cost, index) of costs">
+            <tr class="info">
+                <th class="text-success">{{index + 1}}.{{cost.type}}</th>
+                <td class="text-muted">{{cost.description}}</td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td class="text-right">￥ {{cost.price.toFixed(2)}} &times; {{cost.count}}</td>
+            </tr>
+        </template>
+        </tbody>
+    </table>
+</div>
+<div class="container">
+    <h2>对象属性遍历</h2>
+    <ul>
+        <li v-for="(value, key, index) in paxInfo">{{keyTitles[key]}}: {{value}}</li>
+    </ul>
+</div>

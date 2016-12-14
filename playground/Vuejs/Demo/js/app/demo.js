@@ -22,6 +22,12 @@ define(['vue',
         },{
             id:     'demo5',
             text:   '计算属性'
+        },{
+            id:     'demo6',
+            text:   '6.列表渲染'
+        },{
+            id:     'demo7',
+            text:   '7.列表'
         }]
     }
 
