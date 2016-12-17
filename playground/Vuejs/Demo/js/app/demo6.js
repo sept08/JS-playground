@@ -63,9 +63,68 @@ require(['jquery',
         }
     }
 
-    var data = Object.assign(data1, data2);
+    var data3 = {
+        name: '',
+        ffp: [
+            {
+                name: 'Micheal',
+                age: 24
+            }, {
+                name: 'Jack',
+                age: 17
+            }, {
+                name: 'Tiffany',
+                age: 23
+            }, {
+                name: 'Alice',
+                age: 9
+            }, {
+                name: 'Dannis',
+                age: 42
+            }, {
+                name: 'Greg',
+                age: 36
+            }, {
+                name: 'Pearl',
+                age: 3
+            }, {
+                name: 'David',
+                age: 5
+            }, {
+                name: 'Bob',
+                age: 4
+            }, {
+                name: 'Johnson',
+                age: 1
+            }
+        ]
+    }
+
+    var data = Object.assign(data1, data2, data3);
     new Vue({
         el: '#ds',
-        data: data
+        data: data,
+        computed: {
+            ffps: function () {
+                // first, filter items of list on input.
+                var filterList = this.ffp.filter(function (element) {
+                    // str.includes(searchString[, position]) - 区分大小写
+                    // both string translate to lower case before find.
+                    var inStr = this.name.toLowerCase();
+                    var itemOfList = element.name.toLowerCase();
+                    var result = itemOfList.includes(inStr);
+                    return result;
+                }, this);
+                // then, sort on age of item by desc
+                var sortList = filterList.sort(function (a, b) {
+                    if(a.age > b.age){
+                        return 1;
+                    }else{
+                        return -1;
+                    }
+                });
+                return sortList;
+            }
+        }
     })
 });

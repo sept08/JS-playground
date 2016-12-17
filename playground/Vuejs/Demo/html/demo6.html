@@ -1,19 +1,5 @@
-<div class="col-md-7">
-    <h2>乘客列表</h2>
-    <div class="row clearfix visible-md-block visible-lg-block">
-        <div class="col-md-2" v-for="title in titles"><strong>{{title}}</strong></div>
-    </div>
-    <div class="row" v-for="(pax, index) in paxes">
-        <div class="col-md-2">{{pax.name}}</div>
-        <div class="col-md-2">{{pax.idType}}</div>
-        <div class="col-md-3">{{pax.idNumber}}</div>
-        <div class="col-md-2">{{pax.mobile}}</div>
-        <div class="col-md-3"><i>{{flightSummary}}</i></div>
-        <hr v-if="index !== paxes.length - 1">
-    </div>
-</div>
-<div class="col-md-5">
-    <h2>价格信息</h2>
+<div class="container">
+    <h2>Array构成的列表(index)</h2>
     <table class="table table-condensed">
         <tbody>
         <!--index 为专有名词，与顺序有关-->
@@ -30,9 +16,20 @@
         </tbody>
     </table>
 </div>
+
 <div class="container">
-    <h2>对象属性遍历</h2>
+    <h2>Object构成的列表(key,index)</h2>
     <ul>
         <li v-for="(value, key, index) in paxInfo">{{keyTitles[key]}}: {{value}}</li>
+    </ul>
+</div>
+
+<div class="container">
+    <h2>列表的过滤(过滤/排序)</h2>
+    <input v-model="name">
+    <ul>
+        <li v-for="pax in ffps">
+            {{ pax.name }}
+        </li>
     </ul>
 </div>
