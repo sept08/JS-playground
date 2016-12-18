@@ -11,8 +11,7 @@ define(['jquery',
 
         var options = ('选项一,选项二,选项三,选项四,选项五').split(',')
 
-        var vm = new Vue({
-            el: '#ds',
+        var vm = new Vue({            el: '#ds',
             data: {
                 options: options,
                 selected: options[0],

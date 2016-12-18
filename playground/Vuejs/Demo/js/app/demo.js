@@ -2,10 +2,9 @@
  * Created by Administrator on 2016/11/25.
  * 1. html文件定位模板
  */
-define(['vue',
-        'css!../../css/lesson1.css'],
-    function (Vue) {
+define(function (require) {
 
+    var Vue = require('vue');
     var data = {
         items: [{
             id:     'demo1',
@@ -15,7 +14,7 @@ define(['vue',
             text:   'VueJS方式'
         },{
             id:     'demo3',
-            text:   '数据绑定-插值'
+            text:   '3.数据绑定'
         },{
             id:     'demo4',
             text:   '数据绑定-指令'
@@ -36,7 +35,10 @@ define(['vue',
         data: data,
         methods: {
             loadDemo: function (name) {
-                require([name])
+                require([name],function (module) {
+                    debugger
+                    module.load();
+                })
             }
         }
     })

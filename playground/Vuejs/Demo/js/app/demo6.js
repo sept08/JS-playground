@@ -1,12 +1,10 @@
 /**
  * Created by Administrator on 2016/12/10.
  */
-require(['jquery',
+define(['jquery',
         'vue',
-        'text!../../html/demo6.html',
-        'css!../../css/lesson1.css'],function ($,Vue,htmlDemo) {
-    $("#ds").html('');
-    $("#ds").append(htmlDemo);
+        'text!../../html/demo6.html'],
+    function ($,Vue,htmlDemo) {
 
     var data1 = {
         flightSummary: 'non-stop flight',
@@ -101,30 +99,43 @@ require(['jquery',
     }
 
     var data = Object.assign(data1, data2, data3);
-    new Vue({
-        el: '#ds',
-        data: data,
-        computed: {
-            ffps: function () {
-                // first, filter items of list on input.
-                var filterList = this.ffp.filter(function (element) {
-                    // str.includes(searchString[, position]) - 区分大小写
-                    // both string translate to lower case before find.
-                    var inStr = this.name.toLowerCase();
-                    var itemOfList = element.name.toLowerCase();
-                    var result = itemOfList.includes(inStr);
-                    return result;
-                }, this);
-                // then, sort on age of item by desc
-                var sortList = filterList.sort(function (a, b) {
-                    if(a.age > b.age){
-                        return 1;
-                    }else{
-                        return -1;
-                    }
-                });
-                return sortList;
+
+    /**
+     * to load module
+     */
+    function load(){
+        $("#ds").html('');
+        $("#ds").append(htmlDemo);
+
+        new Vue({
+            el: '#ds',
+            data: data,
+            computed: {
+                ffps: function () {
+                    // first, filter items of list on input.
+                    var filterList = this.ffp.filter(function (element) {
+                        // str.includes(searchString[, position]) - 区分大小写
+                        // both string translate to lower case before find.
+                        var inStr = this.name.toLowerCase();
+                        var itemOfList = element.name.toLowerCase();
+                        var result = itemOfList.includes(inStr);
+                        return result;
+                    }, this);
+                    // then, sort on age of item by desc
+                    var sortList = filterList.sort(function (a, b) {
+                        if(a.age > b.age){
+                            return 1;
+                        }else{
+                            return -1;
+                        }
+                    });
+                    return sortList;
+                }
             }
-        }
-    })
+        })
+    }
+
+    return {
+        load: load
+    };
 });

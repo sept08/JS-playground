@@ -6,8 +6,6 @@ define(['jquery',
         'text!../../html/demo3.html',
         'css!../../css/lesson1.css'],
     function ($,Vue,htmlDemo) {
-        $("#ds").html('');
-        $("#ds").append(htmlDemo);
 
         var options = [
             {
@@ -41,18 +39,27 @@ define(['jquery',
             return [person.name, person.gender, person.age + '岁', person.department].join('，')
         })
 
-        var vm = new Vue({
-            el: '#ds',
-            data: {
-                options: options,
-                selected: options[0],
-                showListDiv: false
-            },
-            methods: {
-                selectOption: function (opt) {
-                    this.selected = opt
-                    this.showListDiv = false
+        function load() {
+            $("#ds").html('');
+            $("#ds").append(htmlDemo);
+
+            var vm = new Vue({
+                el: '#ds',
+                data: {
+                    options: options,
+                    selected: options[0],
+                    showListDiv: false
+                },
+                methods: {
+                    selectOption: function (opt) {
+                        this.selected = opt
+                        this.showListDiv = false
+                    }
                 }
-            }
-        })
+            })
+        }
+
+        return {
+            load: load
+        }
 });
