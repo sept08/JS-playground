@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>用户信息录入界面</title>
+</head>
+<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<body>
+    <div class="container">
+        <h3>用户信息</h3>
+        <hr>
+        <form class="form-horizontal" id="infoInput">
+            <div class="form-group">
+                <label for="userName" class="col-sm-2 control-label">姓名</label>
+                <div class="col-sm-3">
+                    <input type="text" id="userName" class="form-control" placeholder="姓名" v-model="userName">
+                    <p>请确保与证件上的姓名完全一致</p>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="certification" class="col-sm-2 control-label">证件类型</label>
+                <div class="col-sm-3">
+                    <select class="form-control" id="certification" v-model="certification">
+                        <option v-for="type in certifications" :value="type.id">{{type.name}}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="cardId" class="col-sm-2 control-label">证件号码</label>
+                <div class="col-sm-3">
+                    <input type="text" id="cardId" class="form-control" placeholder="证件号码" v-model="cardId">
+                    <p v-show="isError">请输入正确的证件号码</p>
+                </div>
+            </div>
+
+            <div class="form-group" v-show="isShow">
+                <label for="date" class="col-sm-2 control-label">出生日期</label>
+                <div class="col-sm-3">
+                    <input type="text" id="date" class="form-control" placeholder="出生日期" v-model="date">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button class="btn btn-success" :disabled="okBtn" @click.prevent="okEvent()">确定</button>
+                    <button class="btn btn-danger">取消</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+<!--<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>-->
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<script src="js/idCardValidate.js"></script>
+<script src="js/input.js"></script>
+</html>
