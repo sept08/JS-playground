@@ -5,7 +5,7 @@
 *   [Tools](#Tools)
 
 ## Tools
-*   githuub stars Tools: [myGitStar](http://mygitstar.herokuapp.com/)/[astral](https://app.astralapp.com/)
+*   githuub stars Tools: [myGitStar](http://mygitstar.herokuapp.com/)/[astral](https://app.astralapp.com/)
 *   Web playground: [JsFiddle](https://jsfiddle.net/)/[codePen](http://codepen.io/)
 *   js Format Tool[jsbeautifier](http://jsbeautifier.org/)
 *   other Tools: [toolLu](http://tool.lu/)
