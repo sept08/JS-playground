@@ -2,8 +2,7 @@
 [![DOI](https://zenodo.org/badge/63613454.svg)](https://zenodo.org/badge/latestdoi/63613454) [![Tian](https://img.shields.io/badge/tian-master-brightgreen.svg)](https://img.shields.io/badge/tian-master-brightgreen.svg)
 
 ## Overview
-　　本仓库主要记录笔者学习JS相关知识过程中的技术总结、工具分享及工程实践。
-  
+　　所有的开始之前你都会眺望过远方，虽然启程之后总难避风雨飘摇，但作为船长又怎愿随波逐流。 Call me Captain Tian
 ## Index
 *   [Tools](#Tools)
 
