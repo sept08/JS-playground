@@ -14,7 +14,7 @@ const args = yargs
     default: false,
     describe: 'watch all files'
   })
-  // 是否详细输出命令行执行认知
+  // 是否详细输出命令行执行日志
   .option('verbose',{
     boolean: true,
     default: false,
