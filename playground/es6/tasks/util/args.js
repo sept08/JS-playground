@@ -1,5 +1,5 @@
 // 引入node.js命令行框架
-import yargs form 'yargs';
+import yargs from 'yargs';
 
 const args = yargs
   // 区分开发环境还是发布环境，默认开发环境
