@@ -37,31 +37,33 @@
     console.log('es6',code);
   }
 }
-
+// 判断是否包含字符串、是否以子字符串起始/结尾
 {
   let str="string";
   console.log('includes',str.includes("c"));
   console.log('start',str.startsWith('str'));
   console.log('end',str.endsWith('ng'));
 }
-
+// 字符串重复
 {
   let str="abc";
   console.log(str.repeat(2));
 }
-
+// 模板字符串
 {
   let name="list";
   let info="hello world";
   let m=`i am ${name},${info}`;
   console.log(m);
 }
-
+// 属于ES6草案，需要引入babel-polyfill包方可使用
+// 字符补白
 {
   console.log('1'.padStart(2,'0'));
   console.log('1'.padEnd(2,'0'));
 }
-
+// 标签模板
+// 作用 1，过滤HTML字符串防止XSS攻击。2，处理多语言转换
 {
   let user={
     name:'list',
@@ -73,7 +75,7 @@
     return s+v1+v2
   }
 }
-
+// 使用原始字符串，不自动对特殊字符串转义
 {
   console.log(String.raw`Hi\n${1+2}`);
   console.log(`Hi\n${1+2}`);
