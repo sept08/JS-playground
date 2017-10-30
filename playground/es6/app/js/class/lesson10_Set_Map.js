@@ -1,4 +1,27 @@
 {
+  // Set
+  // 有何特点？使用场景？
+  /*
+  1. 类似数组，但成员的值唯一 => 可用于array数组去重： 
+      将Set对象转化为Array：[...new Set(array)]
+                           Array.from(new Set(array))
+  */
+  // 如何增删改查？
+  /*
+  1. Set使用add增加元素，元素判断相等属于“精确相等”，例外情况：
+      两个NaN认为相等
+      两个对象总是不相等
+  2. size 获取总数
+  3. add(value) 增
+  4. delete(value) 删
+  5. has(value) 判断是否存在
+  6. clear() 清楚所有元素
+  7. keys() 遍历 - 返回键名
+     values() 遍历 - 返回键值
+     entries() 遍历 - 返回键值对
+     forEach() 使用回调函数遍历
+  */
+  // 如何与之前版本中常用的array和object通用？
   // Set中的元素不能重复
   let list = new Set()
   list.add(5)
