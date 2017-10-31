@@ -1,4 +1,9 @@
 {
+  // 元编程，对编程语言进行编程
+  // Proxy
+  /*
+  使用形式：new Proxy(target, handler)
+  */
   let obj={
     time:'2017-03-11',
     name:'net',
