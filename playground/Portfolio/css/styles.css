@@ -1,0 +1,17 @@
+body {
+	font-family: 'Roboto', sans-serif;
+}
+
+header {
+	margin-top: 20px;
+}
+
+.logo {
+	height: 100px;
+	width: 100px;
+}
+
+.title-separate {
+	margin-top: 10px;
+	margin-bottom: 10px;
+}

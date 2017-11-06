@@ -1,4 +1,29 @@
 {
+  // Set
+  // 有何特点？使用场景？
+  /*
+  1. 类似数组，但成员的值唯一 => 可用于array数组去重
+  */
+  // 如何增删改查？
+  /*
+  1. Set使用add增加元素，元素判断相等属于“精确相等”，例外情况：
+      两个NaN认为相等
+      两个对象总是不相等
+  2. size 获取总数
+  3. add(value) 增
+  4. delete(value) 删
+  5. has(value) 判断是否存在
+  6. clear() 清楚所有元素
+  7. keys() 遍历 - 返回键名
+     values() 遍历 - 返回键值
+     entries() 遍历 - 返回键值对
+     forEach() 使用回调函数遍历
+  */
+  // 如何与之前版本中常用的array和object通用？
+  /*
+  将Set对象转化为Array：[...new Set(array)]
+                       Array.from(new Set(array))
+  */
   // Set中的元素不能重复
   let list = new Set()
   list.add(5)
@@ -61,8 +86,12 @@
 
 
 {
-  // 1.WeakSet的元素只能是对象
-  // 2.存储对象均为弱引用，如果存储的对象元素被垃圾回收，则不能取到，所以不能被遍历
+  // WeakSet的特点
+  /*
+  1.WeakSet的元素只能是对象
+  2.存储对象均为弱引用，如果存储的对象元素被垃圾回收，则不能取到，所以不能被遍历 => 用处：存储DOM节点
+      若传数组进行初始化，须确保数组各成员为对象
+  */
   let weakList=new WeakSet()
 
   let arg={}
@@ -72,6 +101,30 @@
 }
 
 {
+  // Map
+  /*
+  1. 各种类型的值都可以当键
+  */
+  // 基本操作
+  /*
+  1. size 获取总数
+  2. set(key, value) 增改
+  3. get(key) 取
+  4. has(key) 判断是否存在
+  5. delete(key) 删
+  6. clear() 清除所有
+  7. keys() 遍历 - 返回键名
+     values() 遍历 - 返回键值
+     entries() 遍历 - 返回键值对
+     forEach() 使用回调函数遍历
+  */
+  // 如何与之前版本中常用的array和object通用？
+  /*
+  1. Map to array: [...new Map()]
+  2. array to Map: new Map([[a,b],[c,d]])
+  3. Map to object: 遍历赋值
+  4. object to Map: 遍历赋值 Object.keys(obj)
+  */
   let map = new Map()
   let arr=['123']
   map.set(arr,456)

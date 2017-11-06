@@ -1,4 +1,34 @@
 {
+  // 元编程，对编程语言进行编程
+  // Proxy
+  /*
+  使用形式：
+    new Proxy(target, handler) 创建代理实例，若使拦截生效需调用代理实例
+    {proxy: new Proxy(target, handler)} 将代理属性化，对象默认先调用代理方法
+  拦截方法：
+    1. get()
+    2. set()
+    3. apply() 拦截函数的调用、call和apply操作
+    4. has() 拦截HasProperty操作
+    5. construct() 拦截new命令
+    6. deleteProperty() 拦截delete操作
+    7. defineProperty() 拦截了Object.defineProperty操作，添加新属性
+    8. getOwnPropertyDescriptor() 拦截Object.getOwnPropertyDescriptor()，查看属性描述符（值，是否可配置，是否可枚举，是否可写）
+    9. isExtensible() 拦截Object.isExtensible操作,返回值为布尔值
+   10. preventExtensions() 拦截Object.preventExtensions()
+   11. getPropertyOf() 拦截获取对象原型
+       拦截操作包括：
+       Object.prototype.__proto__
+       Object.prototype.isPrototypeOf()
+       Object.getPrototypeOf()
+       Reflect.getPrototypeOf()
+       instanceof
+   12. setPrototypeOf() 拦截Object.setPrototypeOf方法
+   13. ownKeys() 拦截对象自身属性的读取操作
+       Object.getOwnPropertyNames()
+       Object.getOwnPropertySymbols()
+       Object.keys()
+  */
   let obj={
     time:'2017-03-11',
     name:'net',
