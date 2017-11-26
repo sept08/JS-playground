@@ -1,5 +1,5 @@
 {
-  "name": "nodejs",
+  "name": "anydoors",
   "version": "0.1.1",
   "description": "static web server",
   "main": "src/app.js",
