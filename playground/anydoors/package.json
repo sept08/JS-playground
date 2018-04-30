@@ -1,0 +1,26 @@
+{
+  "name": "anydoors",
+  "version": "0.1.1",
+  "description": "static web server",
+  "main": "src/app.js",
+  "bin":{
+    "anydoors": "bin/anydoor"
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "fix": "eslint --fix ."
+  },
+  "pre-commit": [
+    "lint"
+  ],
+  "author": "josh",
+  "license": "ISC",
+  "devDependencies": {
+    "pre-commit": "^1.2.2"
+  },
+  "dependencies": {
+    "chalk": "^2.3.0",
+    "handlebars": "^4.0.11",
+    "yargs": "^10.0.3"
+  }
+}
