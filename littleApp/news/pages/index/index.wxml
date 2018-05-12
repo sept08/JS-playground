@@ -1,0 +1,15 @@
+
+<scroll-view scroll-x>
+  <view class='types-list'>
+    <view wx:for='{{ typeLst }}'>
+      <view class='type active' wx:if='{{ index == activePage}}'>{{ item }}</view>
+      <view class='type' wx:if='{{ index != activePage}}'>{{ item }}</view>
+    </view>
+  </view>
+</scroll-view>
+
+<view class='news-list'>
+  <view wx:for='{{ newsLst }}'>
+    <view>{{ index }}</view>
+  </view>
+</view>

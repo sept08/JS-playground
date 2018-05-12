@@ -1,0 +1,19 @@
+.types-list{
+  display: flex;
+  font-size: 30rpx;
+  line-height: 42rpx;
+  height: 80rpx;
+  color: #f0f0f0;
+  background-color: #0099ff;
+}
+.type{
+  margin-left: 20rpx;
+  margin-right: 20rpx;
+  margin-top: 10rpx;
+}
+.active{
+  font-size: 36rpx;
+  font-weight: bold;
+  padding-bottom: 10rpx;
+  border-bottom: solid 2px;
+}
