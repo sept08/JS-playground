@@ -1,15 +1,39 @@
 
 <scroll-view scroll-x>
   <view class='types-list'>
-    <view wx:for='{{ typeLst }}'>
+    <view wx:for='{{ typeLst }}' bindtap='onTapType' data-index='{{ index }}'>
       <view class='type active' wx:if='{{ index == activePage}}'>{{ item }}</view>
       <view class='type' wx:if='{{ index != activePage}}'>{{ item }}</view>
     </view>
   </view>
 </scroll-view>
 
-<view class='news-list'>
+<scroll-view>
   <view wx:for='{{ newsLst }}'>
-    <view>{{ index }}</view>
+    <view class='hot-news' 
+          wx:if='{{index == 0}}' 
+          bindtap='onTapDetail'
+          data-id='{{ item.id }}'>
+      <image class='hot-news-bg' src='{{ item.firstImage }}'></image>
+      <image class='hot-news-image' src='{{ item.firstImage }}'></image>
+      <view class='hot-news-title'>{{ item.title }}</view>
+      <view class='hot-note-wrapper'>
+        <view class='hot-note' wx:if='{{ item.source.length > 0 }}'>{{ item.source }}</view>
+        <view class='hot-note'>{{ item.time }}</view>
+      </view>
+    </view>
+    <view class='other-news' 
+          wx:if='{{index != 0}}' 
+          bindtap='onTapDetail'
+          data-id='{{ item.id }}'>
+      <view class='other-news-text'>
+        <view class='other-news-title'>{{ item.title }}</view>
+        <view class='other-note-wrapper'>
+          <view class='other-note' wx:if='{{ item.source.length > 0 }}'>{{ item.source }}</view>
+          <view class='other-note'>{{ item.time }}</view>
+        </view>
+      </view>
+      <image class='other-news-image' src='{{ item.firstImage }}'></image>
+    </view>
   </view>
-</view>
+</scroll-view>
