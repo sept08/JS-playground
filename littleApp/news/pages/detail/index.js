@@ -6,7 +6,7 @@ Page({
    */
   data: {
     newsId: 0,
-    activePage: 0,
+    activePage: 0, // 记录跳转之前的新闻类别
     title: '',
     source: '',
     time: '',
@@ -33,7 +33,7 @@ Page({
       wx.stopPullDownRefresh()
     })
   },
-  // 获取
+  // 获取详细新闻数据
   getNewsDetail(newsId, callback){
     wx.request({
       url: 'https://test-miniprogram.com/api/news/detail',
@@ -55,6 +55,7 @@ Page({
       }
     })
   },
+  // 自定义导航栏的返回事件
   onTapBack(){
     wx.navigateTo({
       url: '/pages/index/index?activePage=' + this.data.activePage,

@@ -15,22 +15,21 @@ Page({
     newsLst: []
   },
   onLoad(options){
+    // 详情返回记忆之前状态
     if (options.activePage){
       this.setData({
         activePage: options.activePage
       })
     }
     this.getNews()
-    wx.setNavigationBarColor({
-      frontColor: '#000000',
-      backgroundColor: '#0099ff'
-    })
   },
+  // 下拉事件
   onPullDownRefresh() {
     this.getNews(() => {
       wx.stopPullDownRefresh()
     })
   },
+  // 获取新闻列表内容
   getNews(callback){  
     wx.request({
       url: 'https://test-miniprogram.com/api/news/list',
