@@ -14,8 +14,22 @@ Page({
     activePage: 0,
     newsLst: []
   },
-  onLoad(){
+  onLoad(options){
+    if (options.activePage){
+      this.setData({
+        activePage: options.activePage
+      })
+    }
     this.getNews()
+    wx.setNavigationBarColor({
+      frontColor: '#000000',
+      backgroundColor: '#0099ff'
+    })
+  },
+  onPullDownRefresh() {
+    this.getNews(() => {
+      wx.stopPullDownRefresh()
+    })
   },
   getNews(callback){  
     wx.request({
@@ -27,6 +41,9 @@ Page({
         let result = res.data.result
         result.forEach(item => {
           item.time = /T(\d+:\d+)/.exec(item.date)[1]
+          if (!item.firstImage){
+            item.firstImage = 'http://via.placeholder.com/350x300'
+          }
         })
         this.setData({
           newsLst: result
@@ -37,15 +54,18 @@ Page({
       }
     })
   },
+  // 点击新闻分类
   onTapType(params){
     this.setData({
       activePage: params.currentTarget.dataset.index
     })
+    this.getNews()
   },
+  // 点击查看新闻详情
   onTapDetail(params){
     let newsId = params.currentTarget.dataset.id
     wx.navigateTo({
-      url: '/pages/detail/index?newsId=' + newsId,
+      url: '/pages/detail/index?newsId=' + newsId + '&activePage=' + this.data.activePage,
     })
   }
 })

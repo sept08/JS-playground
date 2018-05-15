@@ -1,3 +1,7 @@
+<view class='navigator'>
+  <image class='navigator-img' src='/images/logo.jpg'></image>
+  <text class='navigator-text' >快读‧资讯</text>
+</view>
 
 <scroll-view scroll-x>
   <view class='types-list'>

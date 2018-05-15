@@ -1,3 +1,23 @@
+.navigator{
+  display: flex;
+  height: 140rpx;
+  background-color: #0099ff;
+}
+.navigator-img{
+  height: 55rpx;
+  width: 55rpx;
+  padding-top: 65rpx;
+  padding-left: 30rpx;
+}
+.navigator-text{
+  color: #ffffff;
+  opacity: 0.8;
+  font-size: 30rpx;
+  font-weight: bold;
+  padding-top: 70rpx;
+  padding-left: 30rpx;
+}
+
 .types-list{
   display: flex;
   font-size: 30rpx;

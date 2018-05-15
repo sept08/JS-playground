@@ -5,7 +5,13 @@ Page({
    * 页面的初始数据
    */
   data: {
-    newsId: 0
+    newsId: 0,
+    activePage: 0,
+    title: '',
+    source: '',
+    time: '',
+    readCount: 0,
+    content: []
   },
 
   /**
@@ -13,7 +19,8 @@ Page({
    */
   onLoad: function (options) {
     this.setData({
-      newsId: options.newsId
+      newsId: options.newsId,
+      activePage: options.activePage
     })
     this.getNewsDetail(options.newsId)
   },
@@ -22,17 +29,35 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-  
+    this.getNewsDetail(this.data.newsId, () => {
+      wx.stopPullDownRefresh()
+    })
   },
-  getNewsDetail(newsId){
+  // 获取
+  getNewsDetail(newsId, callback){
     wx.request({
       url: 'https://test-miniprogram.com/api/news/detail',
       data: {
         id: newsId
       },
       success: res => {
-        console.log(res)
+        let result = res.data.result
+        this.setData({
+          title: result.title,
+          readCount: result.readCount,
+          source: result.source,
+          time: /T(\d+:\d+)/.exec(result.date)[1],
+          content: result.content
+        })
+      },
+      complete: () => {
+        callback && callback()
       }
+    })
+  },
+  onTapBack(){
+    wx.navigateTo({
+      url: '/pages/index/index?activePage=' + this.data.activePage,
     })
   }
 })
