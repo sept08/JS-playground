@@ -1,0 +1,19 @@
+<!--pages/detail/index.wxml-->
+<view class='navigator' bindtap='onTapBack'>
+  <image class='navigator-img' src='/images/arrow.png'></image>
+  <text class='navigator-text' >快读‧资讯</text>
+</view>
+
+<view class='article'>
+  <text class='title'>{{ title }}</text>
+  <view class='note'>
+    <text class='source' wx:if='{{ source.length > 0 }}'>{{ source }}</text>
+    <text>{{ time }}</text>
+    <text class='read-cnt'>阅读 {{ readCount }}</text>
+  </view>
+  <view wx:for='{{ content }}'>
+    <text class='content-strong' wx:if='{{ item.type == "strong" }}'>{{ item.text }}</text>
+    <text class='content-p' wx:if='{{ item.type == "p" }}'>{{ item.text }}</text>
+    <image class='content-image' wx:if='{{ item.type == "image" }}' src='{{ item.src }}'></image>
+  </view>
+</view>
